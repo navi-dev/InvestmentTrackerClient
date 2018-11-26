@@ -7,10 +7,11 @@ import { TypographyComponent } from '../../typography/typography.component';
 import { IconsComponent } from '../../icons/icons.component';
 import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
+import { AuthenticationGuard } from 'microsoft-adal-angular6';
 
 export const AdminLayoutRoutes: Routes = [
   // { path: '', redirectTo: 'dashboard', },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthenticationGuard] },
   { path: 'user-profile', component: UserProfileComponent },
   { path: 'table-list', component: TableListComponent },
   { path: 'typography', component: TypographyComponent },

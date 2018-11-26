@@ -5,12 +5,20 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { ContactComponent } from './contact/contact.component';
+import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AuthenticationGuard } from 'microsoft-adal-angular6';
+
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'Loin',
     pathMatch: 'full',
+  },
+  {
+    path: 'Login',
+    component: LoginComponent,
   },
   {
     path: '',
@@ -20,6 +28,7 @@ const routes: Routes = [
         path: '',
         loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
       }],
+    canActivate: [AuthenticationGuard]
   },
   {
     path: 'contact',
@@ -33,7 +42,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'dashboard'
+    redirectTo: 'Login'
   }
 ];
 
