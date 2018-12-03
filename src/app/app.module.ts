@@ -15,22 +15,28 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component';
 import { MsAdalAngular6Module, AuthenticationGuard } from 'microsoft-adal-angular6';
+import { DashboardService } from './dashboard/dashboard.service';
+import { HttpClientModule } from '@angular/common/http';
+import { AdminLayoutModule } from './layouts/admin-layout/admin-layout.module';
 
 @NgModule({
   imports: [
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
+    HttpClientModule,
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
     NgbModule.forRoot(),
     MsAdalAngular6Module.forRoot({
       tenant: 'investmenttracker.onmicrosoft.com',
-      clientId: '81d35d95-a761-48ee-a2d0-3c84120f79b0',
-      redirectUri: 'http://localhost:4200/dashboard',
+      clientId: '27eefe55-baeb-4c65-bec7-67cf938cb30d',
+      redirectUri: 'http://localhost:4200/admin/dashboard',
+      postLogoutRedirectUri: 'http://localhost:4200/login',
+      instance: 'https://login.microsoftonline.com/',
       endpoints: {
-        'https://investmenttracker.onmicrosoft.com/investmenttrackerapi': 'eda8f603-c9fc-452d-b660-a331403d5154'
+        'https://localhost:44327': '27eefe55-baeb-4c65-bec7-67cf938cb30d',
       },
       navigateToLoginRequestUrl: false,
       cacheLocation: 'localStorage',
@@ -42,7 +48,7 @@ import { MsAdalAngular6Module, AuthenticationGuard } from 'microsoft-adal-angula
     ContactComponent,
     LoginComponent,
   ],
-  providers: [AuthenticationGuard],
+  providers: [AuthenticationGuard, DashboardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -14,6 +14,7 @@ export class LoginComponent {
   }
 
   login() {
+    debugger;
     this.adlservice.login();
   }
 }

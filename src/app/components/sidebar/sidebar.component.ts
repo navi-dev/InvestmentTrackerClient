@@ -7,14 +7,14 @@ declare interface RouteInfo {
   class: string;
 }
 export const ROUTES: RouteInfo[] = [
-  { path: '/dashboard', title: 'Dashboard', icon: 'design_app', class: '' },
-  { path: '/icons', title: 'Icons', icon: 'education_atom', class: '' },
-  { path: '/maps', title: 'Maps', icon: 'location_map-big', class: '' },
-  { path: '/notifications', title: 'Notifications', icon: 'ui-1_bell-53', class: '' },
+  { path: '/admin/dashboard', title: 'Dashboard', icon: 'design_app', class: '' },
+  { path: '/admin/icons', title: 'Icons', icon: 'education_atom', class: '' },
+  { path: '/admin/maps', title: 'Maps', icon: 'location_map-big', class: '' },
+  { path: '/admin/notifications', title: 'Notifications', icon: 'ui-1_bell-53', class: '' },
 
-  { path: '/user-profile', title: 'User Profile', icon: 'users_single-02', class: '' },
-  { path: '/table-list', title: 'Table List', icon: 'design_bullet-list-67', class: '' },
-  { path: '/typography', title: 'Typography', icon: 'text_caps-small', class: '' },
+  { path: '/admin/user-profile', title: 'User Profile', icon: 'users_single-02', class: '' },
+  { path: '/admin/table-list', title: 'Table List', icon: 'design_bullet-list-67', class: '' },
+  { path: '/admin/typography', title: 'Typography', icon: 'text_caps-small', class: '' },
   { path: '/contact', title: 'Contact', icon: 'text_caps-small', class: '' }
 ];
 

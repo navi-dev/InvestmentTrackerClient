@@ -12,22 +12,19 @@ import { AuthenticationGuard } from 'microsoft-adal-angular6';
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'Loin',
-    pathMatch: 'full',
-  },
-  {
     path: 'Login',
     component: LoginComponent,
   },
   {
-    path: '',
+    path: 'admin',
     component: AdminLayoutComponent,
-    children: [
-      {
-        path: '',
-        loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
-      }],
+    children:
+      [
+        {
+          path: '',
+          loadChildren: 'app/layouts/admin-layout/admin-layout.module#AdminLayoutModule',
+        }
+      ],
     canActivate: [AuthenticationGuard]
   },
   {
@@ -41,9 +38,14 @@ const routes: Routes = [
     ]
   },
   {
-    path: '**',
-    redirectTo: 'Login'
-  }
+    path: '',
+    redirectTo: 'Login',
+    pathMatch: 'full',
+  },
+  // {
+  //   path: '**',
+  //   redirectTo: 'Login'
+  // }
 ];
 
 @NgModule({
