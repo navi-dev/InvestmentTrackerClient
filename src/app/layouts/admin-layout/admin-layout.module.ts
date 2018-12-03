@@ -13,15 +13,25 @@ import { NotificationsComponent } from '../../notifications/notifications.compon
 import { ChartsModule } from 'ng2-charts';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
+import { AdminLayoutComponent } from './admin-layout.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+import { ComponentsModule } from 'app/components/components.module';
 
 @NgModule({
   imports: [
-    CommonModule,
+    // CommonModule,
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
     ChartsModule,
-    NgbModule,
-    ToastrModule.forRoot()
+    // NgbModule,
+    ToastrModule.forRoot(),
+    // BrowserAnimationsModule,
+    // FormsModule,
+    // HttpModule,
+    // HttpClientModule,
+    ComponentsModule,
   ],
   declarations: [
     DashboardComponent,
@@ -34,4 +44,4 @@ import { ToastrModule } from 'ngx-toastr';
   ]
 })
 
-export class AdminLayoutModule {}
+export class AdminLayoutModule { }
