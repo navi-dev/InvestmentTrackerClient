@@ -16,8 +16,19 @@ import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component';
 import { MsAdalAngular6Module, AuthenticationGuard } from 'microsoft-adal-angular6';
 import { DashboardService } from './dashboard/dashboard.service';
-import { HttpClientModule } from '@angular/common/http';
-import { AdminLayoutModule } from './layouts/admin-layout/admin-layout.module';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { environment } from './../environments/environment';
+import { ApiModule } from '../../node_modules/@navi-dev/api-investmenttracker/api.module'
+import { Configuration, ConfigurationParameters } from '@navi-dev/api-investmenttracker/configuration';
+import { AuthService } from './auth-service.service';
+import { BASE_PATH } from '../../node_modules/@navi-dev/api-investmenttracker';
+import { TokenInterceptor } from './interceptor-service.service';
+
+function getConfig(myAuthService: AuthService) {
+  return new Configuration({
+    basePath: environment.APIEndPoint,
+  });
+}
 
 @NgModule({
   imports: [
@@ -30,17 +41,19 @@ import { AdminLayoutModule } from './layouts/admin-layout/admin-layout.module';
     AppRoutingModule,
     NgbModule.forRoot(),
     MsAdalAngular6Module.forRoot({
-      tenant: 'investmenttracker.onmicrosoft.com',
-      clientId: '27eefe55-baeb-4c65-bec7-67cf938cb30d',
-      redirectUri: 'http://localhost:4200/admin/dashboard',
-      postLogoutRedirectUri: 'http://localhost:4200/login',
+      tenant: environment.tenant,
+      clientId: environment.clientId,
+      redirectUri: environment.redirectUrlAfterLogin,
+      postLogoutRedirectUri: environment.postLogoutRedirectUri,
       instance: 'https://login.microsoftonline.com/',
       endpoints: {
-        'https://localhost:44327': '27eefe55-baeb-4c65-bec7-67cf938cb30d',
+        [environment.APIEndPoint]: environment.clientId
       },
       navigateToLoginRequestUrl: false,
       cacheLocation: 'localStorage',
+
     }),
+    ApiModule
   ],
   declarations: [
     AppComponent,
@@ -48,7 +61,23 @@ import { AdminLayoutModule } from './layouts/admin-layout/admin-layout.module';
     ContactComponent,
     LoginComponent,
   ],
-  providers: [AuthenticationGuard, DashboardService],
+  providers: [
+    AuthenticationGuard,
+    AuthService,
+    TokenInterceptor,
+    DashboardService,
+    {
+      provide: Configuration,
+      useFactory: getConfig,
+      deps: [AuthService],
+      multi: false
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

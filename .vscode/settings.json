@@ -1,0 +1,4 @@
+{
+  "appService.defaultWebAppToDeploy": "/subscriptions/6fe2d205-eea6-4f47-96fc-fe4a5b963777/resourceGroups/InvestmentTrackerApp/providers/Microsoft.Web/sites/InvestmentTrackerApp",
+  "appService.deploySubpath": "dist"
+}

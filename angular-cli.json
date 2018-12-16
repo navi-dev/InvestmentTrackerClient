@@ -9,7 +9,8 @@
       "outDir": "dist",
       "assets": [
         "assets",
-        "favicon.ico"
+        "favicon.ico",
+        "web.config"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -19,16 +20,17 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-          "../node_modules/perfect-scrollbar/css/perfect-scrollbar.css",
-          "../node_modules/ngx-toastr/toastr.css",
-          "./assets/scss/now-ui-dashboard.scss",
-          "./assets/demo/demo.css"
+        "../node_modules/perfect-scrollbar/css/perfect-scrollbar.css",
+        "../node_modules/ngx-toastr/toastr.css",
+        "./assets/scss/now-ui-dashboard.scss",
+        "./assets/demo/demo.css"
       ],
       "scripts": [
         "../node_modules/chart.js/dist/Chart.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
+        "test": "environments/environment.test.ts",
         "dev": "environments/environment.ts",
         "prod": "environments/environment.prod.ts"
       }

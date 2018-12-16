@@ -12,8 +12,14 @@ import { AuthenticationGuard } from 'microsoft-adal-angular6';
 
 const routes: Routes = [
   {
-    path: 'Login',
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full',
+  },
+  {
+    path: 'login',
     component: LoginComponent,
+    pathMatch: 'full',
   },
   {
     path: 'admin',
@@ -36,16 +42,7 @@ const routes: Routes = [
         loadChildren: './contact/contact.module#ContactModule',
       }
     ]
-  },
-  {
-    path: '',
-    redirectTo: 'Login',
-    pathMatch: 'full',
-  },
-  // {
-  //   path: '**',
-  //   redirectTo: 'Login'
-  // }
+  }
 ];
 
 @NgModule({
