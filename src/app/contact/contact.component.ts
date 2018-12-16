@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ContactsService } from '../../../node_modules/@navi-dev/api-investmenttracker/api/contacts.service'
+import { MsAdalAngular6Service } from 'microsoft-adal-angular6';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-contact',
@@ -8,10 +11,14 @@ import { Component, OnInit } from '@angular/core';
 
 export class ContactComponent implements OnInit {
 
-  constructor() { }
+  constructor(private contactApi: ContactsService, private adal: MsAdalAngular6Service) { }
 
   ngOnInit() {
-    console.log('contact');
+    this.contactApi.get().subscribe(elem => {
+      console.log(elem);
+    }, (error) => {
+      console.log(error);
+    })
   }
 
 }
