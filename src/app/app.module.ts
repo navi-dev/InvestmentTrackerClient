@@ -18,10 +18,10 @@ import { MsAdalAngular6Module, AuthenticationGuard } from 'microsoft-adal-angula
 import { DashboardService } from './dashboard/dashboard.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { environment } from './../environments/environment';
-import { ApiModule } from '../../node_modules/@navi-dev/api-investmenttracker/api.module'
-import { Configuration, ConfigurationParameters } from '@navi-dev/api-investmenttracker/configuration';
+import { ApiModule } from '../../node_modules/@navi-dev/api.module'
+import { Configuration } from '../../node_modules/@navi-dev/configuration';
 import { AuthService } from './auth-service.service';
-import { BASE_PATH } from '../../node_modules/@navi-dev/api-investmenttracker';
+// import { BASE_PATH } from '../../node_modules/@navi-dev/api';
 import { TokenInterceptor } from './interceptor-service.service';
 
 function getConfig(myAuthService: AuthService) {

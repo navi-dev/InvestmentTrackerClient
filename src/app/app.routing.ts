@@ -8,6 +8,8 @@ import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthenticationGuard } from 'microsoft-adal-angular6';
+import { AdminLayoutModule } from './layouts/admin-layout/admin-layout.module';
+import { ContactModule } from './contact/contact.module';
 
 
 const routes: Routes = [
@@ -28,7 +30,7 @@ const routes: Routes = [
       [
         {
           path: '',
-          loadChildren: 'app/layouts/admin-layout/admin-layout.module#AdminLayoutModule',
+          loadChildren: () => AdminLayoutModule,
         }
       ],
     canActivate: [AuthenticationGuard]
@@ -39,7 +41,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: './contact/contact.module#ContactModule',
+        loadChildren: () => ContactModule,
       }
     ]
   }
