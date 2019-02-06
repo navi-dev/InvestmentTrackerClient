@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ContactsService } from '@navi-dev/api/contacts.service';
+import { ContactDto } from '@navi-dev/model/contactDto';
 
 @Component({
   selector: 'app-list',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor() { }
+  contacts: Array<ContactDto> = [];
+  constructor(private contactApi: ContactsService) { }
 
   ngOnInit() {
+    this.contactApi.get().subscribe(elem => {
+      if (elem) {
+        this.contacts = elem;
+      }
+    }, (error) => {
+      console.log(error);
+    })
   }
-
 }

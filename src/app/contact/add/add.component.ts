@@ -33,7 +33,6 @@ export class AddComponent implements OnInit {
   }
 
   changeFile(files: FileList) {
-    debugger;
     const file = files.item(0);
     if (file) {
       console.log(file.name);
@@ -43,15 +42,9 @@ export class AddComponent implements OnInit {
   }
 
   save() {
-    debugger;
     const file = this.contact.profile;
     this.contact = this.contactForm.value as Contact;
     this.contact.profile = file;
     this.contactService.addContact(this.contact);
   }
-
-  cancel() {
-
-  }
-
 }

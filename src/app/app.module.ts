@@ -23,6 +23,7 @@ import { Configuration } from '../../node_modules/@navi-dev/configuration';
 import { AuthService } from './auth-service.service';
 // import { BASE_PATH } from '../../node_modules/@navi-dev/api';
 import { TokenInterceptor } from './interceptor-service.service';
+import { AzureComponent } from './azure/azure.component';
 
 function getConfig(myAuthService: AuthService) {
   return new Configuration({
@@ -60,6 +61,7 @@ function getConfig(myAuthService: AuthService) {
     AdminLayoutComponent,
     ContactComponent,
     LoginComponent,
+    // AzureComponent,
   ],
   providers: [
     AuthenticationGuard,

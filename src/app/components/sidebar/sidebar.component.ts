@@ -15,7 +15,8 @@ export const ROUTES: RouteInfo[] = [
   { path: '/admin/user-profile', title: 'User Profile', icon: 'users_single-02', class: '' },
   { path: '/admin/table-list', title: 'Table List', icon: 'design_bullet-list-67', class: '' },
   { path: '/admin/typography', title: 'Typography', icon: 'text_caps-small', class: '' },
-  { path: '/contact', title: 'Contact', icon: 'text_caps-small', class: '' }
+  { path: '/contact', title: 'Contact', icon: 'text_caps-small', class: '' },
+  { path: '/azure', title: 'Azure', icon: 'text_caps-small', class: '' },
 ];
 
 @Component({

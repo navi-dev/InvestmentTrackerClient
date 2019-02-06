@@ -1,0 +1,61 @@
+<div class="wrapper">
+  <div class="sidebar" data-color="red">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="main-panel">
+    <app-navbar></app-navbar>
+    <div class="panel-header panel-header-sm">
+    </div>
+    <div class="main-content">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <h5 class="title">Blob</h5>
+            </div>
+            <div class="row">
+              <div class="card-body">
+                <div class="col-md-12">
+                  <h5>Demo 1: Upload images</h5>
+                </div>
+                <div class="col-md-12">
+                  <input type="file" (change)="changeFile($event.target.files)" />
+                </div>
+                <div class="col-md-2">
+                  <input type="button" class="btn" value="upload" (click)="uploadFile();" />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="card-body">
+                <div class="col-md-12">
+                  <h5>Demo 2: List Uploaded images</h5>
+                </div>
+                <div class="col-md-12" *ngFor="let item of uploadedFiles">
+                  <img src="{{item}}" />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="card-body">
+                <div class="col-md-12">
+                  <h5>Demo 3: Send container meta data</h5>
+                </div>
+                <div class="col-md-3" *ngFor="let item of uploadedFiles">
+                  <input type="text" class="form-control" placeholder="Key" />
+                </div>
+                <div class="col-md-3" *ngFor="let item of uploadedFiles">
+                  <input type="text" class="form-control" placeholder="Value" />
+                </div>
+                <div class="col-md-3" *ngFor="let item of uploadedFiles">
+                  <input type="button" class="btn" value="Save" (click)="saveContainerMetaData();" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <app-footer></app-footer>
+  </div>
+</div>

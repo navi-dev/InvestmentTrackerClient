@@ -10,6 +10,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthenticationGuard } from 'microsoft-adal-angular6';
 import { AdminLayoutModule } from './layouts/admin-layout/admin-layout.module';
 import { ContactModule } from './contact/contact.module';
+import { AzureComponent } from './azure/azure.component';
+import { AzureModule } from './azure/azure.module';
+// import { AzureModule } from './azure/azure.module';
 
 
 const routes: Routes = [
@@ -22,6 +25,16 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent,
     pathMatch: 'full',
+  },
+  {
+    path: 'azure',
+    // component: AzureComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () => AzureModule,
+      }
+    ]
   },
   {
     path: 'admin',
